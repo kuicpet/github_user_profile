@@ -31,7 +31,6 @@ export const Container = styled.nav`
   width: 100%;
   align-items: center;
   justify-content: space-between;
- 
   padding: 0.25rem 1rem;
   border-bottom: 2px solid black;
   div {
@@ -54,7 +53,7 @@ export const Container = styled.nav`
     font-weight: 400;
     list-style: none;
     @media screen and (max-width: 768px) {
-      width: 50%;
+      width: 20%;
     }
     @media screen and (max-width: 400px) {
       width: 100%;
@@ -67,8 +66,8 @@ export const Container = styled.nav`
         }
       }
       @media screen and (max-width: 400px) {
-      display: none ;
-    }
+        display: none;
+      }
     }
   }
 `
