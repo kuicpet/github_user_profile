@@ -5,21 +5,20 @@ export const useApiFetch = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+   const fetchRepos = async () => {
     try {
       setLoading(true)
-      const fetchRepos = async () => {
-        await fetch(`https://api.github.com/users/kuicpet/repos`)
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-            setRepos(data)
-          })
-      }
-      fetchRepos()
+      await fetch(`https://api.github.com/users/kuicpet/repos`).then((res) => res.json()).then((data) => {
+        //console.log(data)
+        setRepos(data)
+        setLoading(false)
+      })
     } catch (error) {
       console.log(error)
     }
     setLoading(false)
+   }
+   fetchRepos()
   }, [])
 
   return { repos, loading }

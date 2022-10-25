@@ -14,7 +14,7 @@ const Header = () => {
       <ul>
         <li>
           <NavLink
-            to={`/repositories`}
+            to={`/repos`}
             style={({ isActive }) => ({
               color: isActive ? 'black' : 'gray',
             })}>

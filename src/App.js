@@ -12,9 +12,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route path='repositories' element={<Repos />}>
-          <Route path=':repositoryId' element={<SingleRepo />} />
-        </Route>
+        <Route path='/repos' element={<Repos />} />
+        <Route path='/repos/:repoId' element={<SingleRepo />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

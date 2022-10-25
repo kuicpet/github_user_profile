@@ -9,13 +9,13 @@ const Grid = ({ children }) => {
   )
 }
 
-export const Container = styled.section`
-  margin: 0 auto;
+export const Container = styled.div`
+  margin: 1rem;
   padding: 0 20px;
 `
 export const Content = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 1rem;
 `
 export default Grid
