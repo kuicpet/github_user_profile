@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
 import { GoRepo } from 'react-icons/go'
+import { BiGitBranch } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
 const Card = ({ repoId, name, description, created_at }) => {
@@ -9,7 +10,7 @@ const Card = ({ repoId, name, description, created_at }) => {
     <Link to={`/repos/${repoId}`} className='link'>
       <Container>
         <span>
-          <GoRepo />
+          <BiGitBranch />
           <h5>{name}</h5>
         </span>
         <p className='desc'>
@@ -18,7 +19,7 @@ const Card = ({ repoId, name, description, created_at }) => {
               ? description
               : `${description.substring(0, 120)}...`
             : 'No description'}
-          </p>
+        </p>
 
         <small>Created : {moment(created_at).fromNow()}</small>
       </Container>
@@ -37,24 +38,25 @@ export const Container = styled.div`
   height: 12rem;
   padding: 0.5rem;
   color: black;
-  z-index: 100 ;
+  z-index: 100;
   //background-color: #3f3f46 ;
 
   span {
     display: flex;
     align-items: center;
     svg {
-      color: red;
+      color: black;
       font-size: 1.25rem;
     }
   }
   h5 {
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-left: 0.5rem;
   }
   p {
     margin: 0.125rem 0;
     font-weight: 200;
+    color: #292626 ;
   }
   .lang {
     text-align: center;
@@ -72,6 +74,11 @@ export const Container = styled.div`
     position: absolute;
     bottom: 0.5rem;
     right: 10px;
+    border: 2px solid black;
+    padding: 0.125rem 1rem;
+    background-color: #caff04;
+    font-weight: bold ;
+    border-radius: 6px ;
   }
 `
 export default Card
