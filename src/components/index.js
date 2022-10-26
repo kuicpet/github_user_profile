@@ -6,5 +6,16 @@ import Loader from './Loader'
 import SearchBar from './SearchBar'
 import Grid from './Grid'
 import Meta from './Meta'
+import BreadCrumb from './BreadCrumb'
 
-export { Button, Card, Header, Footer, Loader, SearchBar, Grid, Meta }
+export {
+  Button,
+  Card,
+  Header,
+  Footer,
+  Loader,
+  SearchBar,
+  Grid,
+  Meta,
+  BreadCrumb,
+}

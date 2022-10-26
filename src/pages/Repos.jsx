@@ -10,7 +10,10 @@ const Repos = () => {
   const { repos, loading } = useApiFetch()
   return (
     <>
-    <Meta title='Repositories' description='A list of public respositories for kuicpet' />
+      <Meta
+        title='Repositories'
+        description='A list of public respositories for kuicpet'
+      />
       <Container>
         {loading ? (
           <Loader />
@@ -37,10 +40,10 @@ const Repos = () => {
   )
 }
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: flex;
-  //align-items:center ;
   justify-content: center;
   min-height: 80vh;
+  //background-color: #272728 ;
 `
 export default Repos

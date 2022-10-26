@@ -48,7 +48,7 @@ export const Content = styled.section`
   h5 {
     color: gray;
     font-size: 1.2rem ;
-    font-weight: 200 ;
+    font-weight: 100 ;
   }
   button {
     color: black;

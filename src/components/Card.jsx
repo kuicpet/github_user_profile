@@ -4,9 +4,9 @@ import moment from 'moment'
 import { GoRepo } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 
-const Card = ({ repoId, name, description, language, created_at }) => {
+const Card = ({ repoId, name, description, created_at }) => {
   return (
-    <Link to={`/repos/${repoId}`}>
+    <Link to={`/repos/${repoId}`} className='link'>
       <Container>
         <span>
           <GoRepo />
@@ -18,7 +18,7 @@ const Card = ({ repoId, name, description, language, created_at }) => {
               ? description
               : `${description.substring(0, 120)}...`
             : 'No description'}
-        </p>
+          </p>
 
         <small>Created : {moment(created_at).fromNow()}</small>
       </Container>
@@ -33,9 +33,13 @@ export const Container = styled.div`
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease-in-out;
-  border: 2px solid purple;
+  border: 2px solid #47474e;
   height: 12rem;
   padding: 0.5rem;
+  color: black;
+  z-index: 100 ;
+  //background-color: #3f3f46 ;
+
   span {
     display: flex;
     align-items: center;

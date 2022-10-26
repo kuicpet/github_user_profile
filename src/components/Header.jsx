@@ -16,7 +16,7 @@ const Header = () => {
           <NavLink
             to={`/repos`}
             style={({ isActive }) => ({
-              color: isActive ? 'black' : 'gray',
+              color: isActive ? 'white' : 'gray',
             })}>
             Repositories
           </NavLink>
@@ -32,7 +32,8 @@ export const Container = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem 1rem;
-  border-bottom: 2px solid black;
+  border-bottom:1px solid white;
+  background-color: #272728;
   div {
     display: flex;
     align-items: center;
@@ -41,7 +42,7 @@ export const Container = styled.nav`
     margin: 0 1rem;
     a {
       font-size: 2.25rem;
-      color: purple;
+      color: white;
     }
   }
   ul {
