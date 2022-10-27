@@ -40,7 +40,7 @@ const SingleRepo = () => {
           `https://api.github.com/repos/kuicpet/${repoId}/languages`,
           {
             headers: {
-              Authorization: `bearer ${token}`,
+              auth: `${token}`,
               'Content-Type': 'application/json',
             },
           }
@@ -58,7 +58,7 @@ const SingleRepo = () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/tags`, {
           headers: {
-            Authorization: `bearer ${token}`,
+            auth: `${token}`,
             'Content-Type': 'application/json',
           },
         })
@@ -75,7 +75,7 @@ const SingleRepo = () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/issues`, {
           headers: {
-            Authorization: `bearer ${token}`,
+            auth: `${token}`,
             'Content-Type': 'application/json',
           },
         })
@@ -92,7 +92,7 @@ const SingleRepo = () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/contents`, {
           headers: {
-            Authorization: `bearer ${token}`,
+            auth: `${token}`,
             'Content-Type': 'application/json',
           },
         })
@@ -109,13 +109,13 @@ const SingleRepo = () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/commits`, {
           headers: {
-            Authorization: `bearer ${token}`,
+            auth: `${token}`,
             'Content-Type': 'application/json',
           },
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data[0]?.commit)
+            // console.log(data[0]?.commit)
             setCommits(data)
             setMessages(data[0]?.commit?.message)
             setTime(data[0]?.commit?.committer?.date)

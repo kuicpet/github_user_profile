@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
-const token =
-  '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'
+const token = `${process.env.REACT_APP_API_TOKEN}`
+//console.log(token)
 export const useApiFetch = () => {
   const [repos, setRepos] = useState([])
   const [loading, setLoading] = useState(false)
@@ -12,7 +12,7 @@ export const useApiFetch = () => {
         setLoading(true)
         await fetch(`https://api.github.com/users/kuicpet/repos`, {
           headers: {
-            Authorization: `bearer ${token}`,
+            auth: `${token}`,
             'Content-Type': 'application/json',
           },
         })
