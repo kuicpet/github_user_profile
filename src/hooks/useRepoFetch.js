@@ -11,7 +11,7 @@ export const useRepoFetch = (repoId) => {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}`)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            //console.log(data)
             setRepo(data)
             setLoading(false)
           })

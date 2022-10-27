@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
-import { GoRepo } from 'react-icons/go'
 import { BiGitBranch } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
@@ -56,7 +55,8 @@ export const Container = styled.div`
   p {
     margin: 0.125rem 0;
     font-weight: 200;
-    color: #292626 ;
+    color: #292626;
+    font-size: 0.9rem;
   }
   .lang {
     text-align: center;
@@ -77,8 +77,8 @@ export const Container = styled.div`
     border: 2px solid black;
     padding: 0.125rem 1rem;
     background-color: #caff04;
-    font-weight: bold ;
-    border-radius: 6px ;
+    font-weight: bold;
+    border-radius: 6px;
   }
 `
 export default Card

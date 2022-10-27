@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+//import { Outlet, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Loader, Meta } from '../components'
 import Card from '../components/Card'

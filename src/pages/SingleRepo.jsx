@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useParams, Link } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 import moment from 'moment/moment'
 import { BiCodeAlt, BiCode, BiGitBranch, BiTime } from 'react-icons/bi'
 import { BsTag } from 'react-icons/bs'
 import { GrClone } from 'react-icons/gr'
 import { VscIssues } from 'react-icons/vsc'
+import { GiBackwardTime } from 'react-icons/gi'
 import { useRepoFetch } from '../hooks/useRepoFetch'
 import { BreadCrumb, Loader, Meta } from '../components'
+
+const token = `${process.env.REACT_APP_API_TOKEN}`
+//console.log(token)
 
 const SingleRepo = () => {
   const { repoId } = useParams()
@@ -16,6 +20,10 @@ const SingleRepo = () => {
   const [tags, setTags] = useState([])
   const [issues, setIssues] = useState([])
   const [contents, setContents] = useState([])
+  const [commits, setCommits] = useState([])
+  const [messages, setMessages] = useState('')
+  const [time, setTime] = useState('')
+  const [author, setAuthor] = useState('')
 
   const repoName = repo?.name
   const repoDesc = repo?.description
@@ -28,7 +36,15 @@ const SingleRepo = () => {
   useEffect(() => {
     const fetchLangs = async () => {
       try {
-        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/languages`)
+        await fetch(
+          `https://api.github.com/repos/kuicpet/${repoId}/languages`,
+          {
+            headers: {
+              Authorization: `bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
@@ -40,7 +56,12 @@ const SingleRepo = () => {
     }
     const fetchTags = async () => {
       try {
-        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/tags`)
+        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/tags`, {
+          headers: {
+            Authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
@@ -52,7 +73,12 @@ const SingleRepo = () => {
     }
     const fetchIssues = async () => {
       try {
-        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/issues`)
+        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/issues`, {
+          headers: {
+            Authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
@@ -64,7 +90,12 @@ const SingleRepo = () => {
     }
     const fetchContents = async () => {
       try {
-        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/contents`)
+        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/contents`, {
+          headers: {
+            Authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             // console.log(data)
@@ -74,10 +105,31 @@ const SingleRepo = () => {
         console.log(error)
       }
     }
+    const fetchCommits = async () => {
+      try {
+        await fetch(`https://api.github.com/repos/kuicpet/${repoId}/commits`, {
+          headers: {
+            Authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data[0]?.commit)
+            setCommits(data)
+            setMessages(data[0]?.commit?.message)
+            setTime(data[0]?.commit?.committer?.date)
+            setAuthor(data[0]?.commit?.committer?.name)
+          })
+      } catch (error) {
+        console.log(error)
+      }
+    }
     fetchLangs()
     fetchTags()
     fetchIssues()
     fetchContents()
+    fetchCommits()
   }, [repoId])
 
   return (
@@ -131,7 +183,7 @@ const SingleRepo = () => {
               )}
             </div>
             <div className='clone'>
-              <a href={`${cloneRepo}`} target='_blank'>
+              <a href={`${cloneRepo}`} target='_blank' rel="noreferrer">
                 <GrClone />
                 clone repository
               </a>
@@ -144,7 +196,23 @@ const SingleRepo = () => {
             </div>
           </Content>
           <Details>
-            <div className='header'>Header</div>
+            <div className='header'>
+              <span className='author'>Last commit by: {author}</span>
+            </div>
+            <div className='header'>
+              <span>
+                {messages
+                  ? messages.length < 20
+                    ? messages
+                    : `${messages.substring(0, 30)}...`
+                  : 'No description'}
+              </span>
+              <span>{moment(time).fromNow()}</span>
+              <span>
+                <GiBackwardTime />
+                {commits.length} commits
+              </span>
+            </div>
             <table>
               <thead>
                 <th>File Name</th>
@@ -156,7 +224,7 @@ const SingleRepo = () => {
                   contents.map((item, i) => (
                     <tr>
                       <td>
-                        <a href={`${item.html_url}`} target='_blank'>
+                        <a href={`${item.html_url}`} target='_blank' rel="noreferrer" >
                           {item.name}
                         </a>
                       </td>
@@ -326,12 +394,12 @@ export const Content = styled.div`
       font-size: 1.2rem;
     }
     @media screen and (max-width: 400px) {
-      flex-direction:column ;
+      flex-direction: column;
       svg {
-        display: none ;
+        display: none;
       }
       span {
-        margin: 0.1rem
+        margin: 0.1rem;
       }
     }
   }
@@ -359,6 +427,22 @@ export const Details = styled.div`
     //border: 2px solid black;
     padding: 0.125rem 0.5rem;
     height: 2rem;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid black;
+      padding: 0.125rem 0.5rem;
+      border-radius: 8px;
+      svg {
+        font-size: 1.15rem;
+      }
+    }
+    .author {
+      background-color: #caff04;
+      width: 80%;
+      text-transform: lowercase ;
+    }
   }
   table {
     width: 100%;
