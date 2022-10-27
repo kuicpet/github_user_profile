@@ -1,15 +1,56 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import styled from 'styled-components'
+
+const ErrorFallback = ({ error }) => {
+  return (
+    <Container>
+      <Content>
+        <p>Something went wrong</p>
+        <pre>{error.message}</pre>
+      </Content>
+    </Container>
+  )
+}
+
+export const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+`
+export const Content = styled.div`
+  p {
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-align: center;
+    color: black;
+    margin: 0.5rem 0;
+    @media screen and (max-width: 400px) {
+      font-size: 2rem;
+    }
+  }
+  pre {
+    color: red;
+    width: 50%;
+    text-align: center;
+  }
+`
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <App />
+      </ErrorBoundary>
     </Router>
   </React.StrictMode>
 )

@@ -25,6 +25,23 @@ export const Container = styled.footer`
     .heart {
       color: red;
     }
+    a {
+      text-decoration: none;
+      color: black;
+      border: 2px solid black;
+      padding: 0.125rem 0.5rem;
+      border-radius: 8px;
+      background-color: white;
+      cursor: pointer;
+      left: -2px;
+      top: -2px;
+      z-index: 20;
+      //box-shadow: 2px 2px black;
+      transition: 0.1s ease-in-out;
+      &:hover {
+        background-color: rgb(255, 171, 76);
+      }
+    }
   }
 `
 export default Footer

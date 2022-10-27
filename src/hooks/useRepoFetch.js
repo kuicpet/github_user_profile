@@ -27,7 +27,7 @@ export const useRepoFetch = (repoId) => {
       setLoading(false)
     }
     fetchRepo()
-  }, [repoId])
+  }, [repoId,token])
 
   return {repo, loading}
 }

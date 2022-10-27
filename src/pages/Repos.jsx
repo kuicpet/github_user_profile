@@ -15,6 +15,9 @@ const Repos = () => {
         description='A list of public respositories for kuicpet'
       />
       <Container>
+        <div className='title'>
+          <h3>Public Repositories</h3>
+        </div>
         {loading ? (
           <Loader />
         ) : (
@@ -43,7 +46,21 @@ const Repos = () => {
 export const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   min-height: 80vh;
-  //background-color: #272728 ;
+  .title {
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+    width: 40% ;
+    border: 2px solid black ;
+    height: 2.5rem;
+    margin: 1rem auto ;
+    border-radius: 10px ;
+    background-color: orange ;
+    @media screen and (max-width: 768px) {
+      width: 90% ;
+    }
+  }
 `
 export default Repos
