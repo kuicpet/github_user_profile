@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import moment from 'moment/moment'
 import { BiCodeAlt, BiCode, BiGitBranch, BiTime } from 'react-icons/bi'
 import { BsTag } from 'react-icons/bs'
@@ -183,7 +183,7 @@ const SingleRepo = () => {
               )}
             </div>
             <div className='clone'>
-              <a href={`${cloneRepo}`} target='_blank' rel="noreferrer">
+              <a href={`${cloneRepo}`} target='_blank' rel='noreferrer'>
                 <GrClone />
                 clone repository
               </a>
@@ -224,7 +224,10 @@ const SingleRepo = () => {
                   contents.map((item, i) => (
                     <tr>
                       <td>
-                        <a href={`${item.html_url}`} target='_blank' rel="noreferrer" >
+                        <a
+                          href={`${item.html_url}`}
+                          target='_blank'
+                          rel='noreferrer'>
                           {item.name}
                         </a>
                       </td>
@@ -233,6 +236,24 @@ const SingleRepo = () => {
                   ))}
               </tbody>
             </table>
+            <div className='mobile'>
+              {contents &&
+                contents.length > 0 &&
+                contents.map((item, i) => (
+                  <>
+                    <a
+                      href={`${item.html_url}`}
+                      target='_blank'
+                      rel='noreferrer'>
+                      {item
+                  ? item.name.length < 20
+                    ? item.name
+                    : `${item.name.substring(0, 30)}...`
+                  : 'No description'}
+                    </a>
+                  </>
+                ))}
+            </div>
           </Details>
         </Wrapper>
       </Container>
@@ -427,6 +448,7 @@ export const Details = styled.div`
     //border: 2px solid black;
     padding: 0.125rem 0.5rem;
     height: 2rem;
+
     span {
       display: flex;
       align-items: center;
@@ -441,7 +463,18 @@ export const Details = styled.div`
     .author {
       background-color: #caff04;
       width: 80%;
-      text-transform: lowercase ;
+      text-transform: lowercase;
+    }
+    @media screen and (max-width: 400px) {
+      flex-direction: column;
+      height: auto;
+      
+      span {
+        margin: 0.1rem;
+      }
+      .author {
+        width: 100% ;
+      }
     }
   }
   table {
@@ -468,6 +501,7 @@ export const Details = styled.div`
         left: -2px;
         top: -2px;
         z-index: 2;
+        width: 100% ;
         box-shadow: 2px 2px black;
         transition: 0.1s ease-in-out;
         &:hover {
@@ -481,6 +515,32 @@ export const Details = styled.div`
     }
     .size {
       margin-right: auto;
+    }
+    @media screen and (max-width: 400px) {
+      display: none;
+    }
+  }
+  .mobile {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    //border: 2px solid black;
+    //padding: 0.25rem;
+    a {
+      text-decoration: none ;
+      color: black ;
+      font-size: 0.85rem;
+      border: 2px solid black;
+      margin: 0.5rem auto;
+      padding: 0.5rem;
+      width: 18rem;
+      
+      border-radius: 8px;
+      background-color: rgb(255, 171, 76);
+      cursor: pointer;
+      font-weight: bold ;
+    }
+    @media screen and (min-width: 400px) {
+      display:none ;
     }
   }
 `

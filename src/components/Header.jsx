@@ -8,7 +8,7 @@ const Header = () => {
     <Container>
       <div>
         <NavLink to='/'>
-          <DiGithubAlt />
+          <DiGithubAlt  className='logo'/>
         </NavLink>
       </div>
       <ul>
@@ -40,7 +40,7 @@ export const Container = styled.nav`
     justify-content: center;
     font-size: 1.5rem;
     margin: 0 1rem;
-    a {
+    .logo {
       font-size: 2.25rem;
       color: white;
     }
@@ -67,7 +67,7 @@ export const Container = styled.nav`
         }
       }
       @media screen and (max-width: 400px) {
-        display: none;
+       margin-left: auto ;
       }
     }
   }
