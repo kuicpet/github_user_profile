@@ -41,6 +41,7 @@ const SingleRepo = () => {
           {
             headers: {
               auth: `${token}`,
+              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json',
             },
           }
@@ -59,6 +60,7 @@ const SingleRepo = () => {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/tags`, {
           headers: {
             auth: `${token}`,
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
           },
         })
@@ -76,6 +78,7 @@ const SingleRepo = () => {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/issues`, {
           headers: {
             auth: `${token}`,
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
           },
         })
@@ -93,6 +96,7 @@ const SingleRepo = () => {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/contents`, {
           headers: {
             auth: `${token}`,
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
           },
         })
@@ -110,6 +114,7 @@ const SingleRepo = () => {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/commits`, {
           headers: {
             auth: `${token}`,
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
           },
         })
@@ -222,7 +227,7 @@ const SingleRepo = () => {
                 {contents &&
                   contents.length > 0 &&
                   contents.map((item, i) => (
-                    <tr>
+                    <tr key={i}>
                       <td>
                         <a
                           href={`${item.html_url}`}

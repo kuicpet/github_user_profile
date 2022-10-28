@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import photo from '../assets/kingsley_photo.jpg'
 import { GrTwitter, GrLinkedinOption, GrFacebookOption } from 'react-icons/gr'
 import { FaDiscord } from 'react-icons/fa'
 import { FiStar } from 'react-icons/fi'
 import { AiFillGithub } from 'react-icons/ai'
+// images
+import photo from '../assets/kingsley_photo.jpg'
+import yolo from '../assets/yolo-kuicpet.png'
+import pullshark from '../assets/pull-shark-kuicpet.png'
+import contributor from '../assets/arctic-code.png'
 
 const Home = () => {
   return (
@@ -16,14 +20,11 @@ const Home = () => {
           <p>kuicpet</p>
         </div>
         <div className='socials'>
-          <a
-            href='https://github.com/kuicpet'
-            target='_blank'
-            rel='noreferrer'>
-              <span className='span'>
-                <AiFillGithub />
-              </span>
-            </a>
+          <a href='https://github.com/kuicpet' target='_blank' rel='noreferrer'>
+            <span className='span'>
+              <AiFillGithub />
+            </span>
+          </a>
           <a
             href='https://twitter.com/kuicpet'
             target='_blank'
@@ -59,6 +60,30 @@ const Home = () => {
             <FiStar />
             PRO
           </span>
+          <a
+            href='https://github.com/kuicpet?achievement=yolo&tab=achievements'
+            target='_blank'
+            rel='noreferrer'>
+            <span>
+              <img src={yolo} alt='' />
+            </span>
+          </a>
+          <a
+            href='https://github.com/kuicpet?achievement=pull-shark&tab=achievements'
+            target='_blank'
+            rel='noreferrer'>
+            <span>
+              <img src={pullshark} alt='' />
+            </span>
+          </a>
+          <a
+            href='https://github.com/kuicpet?tab=achievements&achievement=arctic-code-vault-contributor'
+            target='_blank'
+            rel='noreferrer'>
+            <span>
+              <img src={contributor} alt='' />
+            </span>
+          </a>
         </div>
       </div>
       <div className='repos'>

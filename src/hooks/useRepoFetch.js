@@ -9,9 +9,10 @@ export const useRepoFetch = (repoId) => {
     const fetchRepo = async () => {
       try {
         setLoading(true)
-        await fetch(`https://api.github.com/repos/kuicpet/${repoId}` ,{
+        await fetch(`https://api.github.com/repos/kuicpet/${repoId}`, {
           headers: {
             auth: `${token}`,
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
           },
         })
@@ -27,7 +28,7 @@ export const useRepoFetch = (repoId) => {
       setLoading(false)
     }
     fetchRepo()
-  }, [repoId,token])
+  }, [repoId, token])
 
-  return {repo, loading}
+  return { repo, loading }
 }

@@ -13,6 +13,7 @@ export const useApiFetch = () => {
         await fetch(`https://api.github.com/users/kuicpet/repos`, {
           headers: {
             auth: `${token}`,
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
           },
         })
