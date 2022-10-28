@@ -4,13 +4,17 @@ import { GrTwitter, GrLinkedinOption, GrFacebookOption } from 'react-icons/gr'
 import { FaDiscord } from 'react-icons/fa'
 import { FiStar } from 'react-icons/fi'
 import { AiFillGithub } from 'react-icons/ai'
+import { useApiFetch } from '../hooks/useApiFetch'
 // images
 import photo from '../assets/kingsley_photo.jpg'
 import yolo from '../assets/yolo-kuicpet.png'
 import pullshark from '../assets/pull-shark-kuicpet.png'
 import contributor from '../assets/arctic-code.png'
+import { Card, Grid, Loader } from '../components'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
+  const { repos, loading } = useApiFetch()
   return (
     <Container>
       <div className='profile'>
@@ -55,6 +59,9 @@ const Home = () => {
             </span>
           </a>
         </div>
+        <div className='achieve'>
+          <h4>Achievements</h4>
+        </div>
         <div className='highlights'>
           <span className='span'>
             <FiStar />
@@ -87,10 +94,26 @@ const Home = () => {
         </div>
       </div>
       <div className='repos'>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        {loading && <Loader />}
+        <Grid>
+          {repos &&
+            repos.length > 0 &&
+            repos
+              .slice(1, 5)
+              .map((item, i) => (
+                <Card
+                  key={i}
+                  repoId={item.name}
+                  name={item.name}
+                  description={item.description}
+                  language={item.language}
+                  created_at={item.created_at}
+                />
+              ))}
+        </Grid>
+        <View>
+          <Link to='/repos'>view more</Link>
+        </View>
       </div>
     </Container>
   )
@@ -115,6 +138,12 @@ export const Container = styled.section`
     // border: 2px solid black;
     margin: 1rem;
     border-radius: 8px;
+    .achieve {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: orange;
+    }
     img {
       width: 90%;
       object-fit: cover;
@@ -169,26 +198,41 @@ export const Container = styled.section`
     }
   }
   .repos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    //display: grid;
+    //grid-template-columns: repeat(2, 1fr);
     width: 70%;
-    border: 2px solid black;
+    //border: 2px solid black;
     margin: 1rem;
     border-radius: 8px;
     @media screen and (max-width: 768px) {
-      width: 95%;
-      grid-template-columns: repeat(1, 1fr);
+      width: 100%;
+      //grid-template-columns: repeat(1, 1fr);
+      //height: 100% ;
     }
     @media screen and (max-width: 400px) {
-      width: 90%;
+      width: 100%;
     }
-    div {
-      border: 2px solid black;
-      margin: 1rem;
-      border-radius: 7px;
-      @media screen and (max-width: 768px) {
-        height: 10rem;
-      }
+  }
+`
+
+export const View = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 6px;
+ // 
+  font-size: 1.2rem;
+  a {
+    text-decoration: none;
+    color: black ;
+    width: 100% ;
+    text-align: center ;
+    padding: 0.25rem;
+    :hover {
+      background-color: orange ;
     }
   }
 `
