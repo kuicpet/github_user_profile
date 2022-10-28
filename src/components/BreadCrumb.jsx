@@ -23,6 +23,7 @@ export const Container = styled.div`
   color: black;
   margin: 0 1rem;
   padding: 1rem;
+
   @media screen and (max-width: 400px) {
     margin: 1rem;
   }
@@ -68,7 +69,7 @@ export const Content = styled.div`
     background-color: #caff04;
     @media screen and (max-width: 400px) {
       margin-top: 0.5rem;
-      margin-left: 0 ;
+      margin-left: 0;
     }
   }
 `

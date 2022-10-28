@@ -34,6 +34,9 @@ export const Container = styled.nav`
   padding: 0.25rem 1rem;
   border-bottom:1px solid white;
   background-color: #272728;
+  position: sticky ;
+  top: 0;
+  z-index: 500 ;
   div {
     display: flex;
     align-items: center;

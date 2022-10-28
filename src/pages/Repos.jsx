@@ -49,17 +49,20 @@ export const Container = styled.div`
   flex-direction: column;
   min-height: 80vh;
   .title {
-    display: flex ;
-    align-items: center ;
-    justify-content: center ;
-    width: 40% ;
-    border: 2px solid black ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    border: 2px solid black;
     height: 2.5rem;
-    margin: 1rem auto ;
-    border-radius: 10px ;
-    background-color: orange ;
+    margin: 1rem auto;
+    border-radius: 10px;
+    background-color: orange;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     @media screen and (max-width: 768px) {
-      width: 90% ;
+      width: 90%;
     }
   }
 `

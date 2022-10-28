@@ -133,7 +133,6 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
     width: 30%;
     // border: 2px solid black;
     margin: 1rem;
@@ -223,16 +222,16 @@ export const View = styled.div`
   margin: 0 auto;
   border: 2px solid black;
   border-radius: 6px;
- // 
+  //
   font-size: 1.2rem;
   a {
     text-decoration: none;
-    color: black ;
-    width: 100% ;
-    text-align: center ;
+    color: black;
+    width: 100%;
+    text-align: center;
     padding: 0.25rem;
     :hover {
-      background-color: orange ;
+      background-color: orange;
     }
   }
 `
