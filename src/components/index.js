@@ -7,6 +7,7 @@ import SearchBar from './SearchBar'
 import Grid from './Grid'
 import Meta from './Meta'
 import BreadCrumb from './BreadCrumb'
+import Paginate from './Paginate'
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Grid,
   Meta,
   BreadCrumb,
+  Paginate
 }
