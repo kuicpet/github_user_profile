@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const token = `${process.env.REACT_APP_API_TOKEN}`
+//const cors = 'https://cors-anywhere.herokuapp.com'
 //console.log(token)
 export const useApiFetch = () => {
   const [repos, setRepos] = useState([])
@@ -10,12 +11,8 @@ export const useApiFetch = () => {
     const fetchRepos = async () => {
       try {
         setLoading(true)
-        await fetch(`https://api.github.com/users/kuicpet/repos`, {
-          headers: {
-            auth: `${token}`,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+        await fetch(`https://api.github.com/users/kuicpet/repos`,{
+          auth: token
         })
           .then((res) => res.json())
           .then((data) => {

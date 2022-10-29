@@ -39,11 +39,7 @@ const SingleRepo = () => {
         await fetch(
           `https://api.github.com/repos/kuicpet/${repoId}/languages`,
           {
-            headers: {
-              auth: `${token}`,
-              'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'application/json',
-            },
+            auth: token
           }
         )
           .then((res) => res.json())
@@ -58,11 +54,7 @@ const SingleRepo = () => {
     const fetchTags = async () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/tags`, {
-          headers: {
-            auth: `${token}`,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+          auth: token
         })
           .then((res) => res.json())
           .then((data) => {
@@ -76,11 +68,7 @@ const SingleRepo = () => {
     const fetchIssues = async () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/issues`, {
-          headers: {
-            auth: `${token}`,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+          auth: token
         })
           .then((res) => res.json())
           .then((data) => {
@@ -94,11 +82,7 @@ const SingleRepo = () => {
     const fetchContents = async () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/contents`, {
-          headers: {
-            auth: `${token}`,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+          auth: token
         })
           .then((res) => res.json())
           .then((data) => {
@@ -112,11 +96,7 @@ const SingleRepo = () => {
     const fetchCommits = async () => {
       try {
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}/commits`, {
-          headers: {
-            auth: `${token}`,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+          auth: token
         })
           .then((res) => res.json())
           .then((data) => {

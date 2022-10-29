@@ -10,11 +10,7 @@ export const useRepoFetch = (repoId) => {
       try {
         setLoading(true)
         await fetch(`https://api.github.com/repos/kuicpet/${repoId}`, {
-          headers: {
-            auth: `${token}`,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
+          auth : token
         })
           .then((res) => res.json())
           .then((data) => {
