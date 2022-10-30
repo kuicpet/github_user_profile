@@ -12,9 +12,10 @@ import yolo from '../assets/yolo-kuicpet.png'
 import pullshark from '../assets/pull-shark-kuicpet.png'
 import contributor from '../assets/arctic-code.png'
 import { Card, Grid, Loader } from '../components'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const Home = () => {
+  const { keyword } = useParams()
   const { repos, loading } = useApiFetch()
   const { user } = useProfileFetch()
 
@@ -35,7 +36,11 @@ const Home = () => {
               <h4>{userProfileName}</h4>
               <p>{userName}</p>
             </div>
-            <a className='bio' href={`${viewProfile}`} target='_blank'  rel='noreferrer'>
+            <a
+              className='bio'
+              href={`${viewProfile}`}
+              target='_blank'
+              rel='noreferrer'>
               View Profile
             </a>
 

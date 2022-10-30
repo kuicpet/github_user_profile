@@ -8,6 +8,7 @@ import Grid from './Grid'
 import Meta from './Meta'
 import BreadCrumb from './BreadCrumb'
 import Paginate from './Paginate'
+import Card2 from './Card2'
 
 export {
   Button,
@@ -19,5 +20,6 @@ export {
   Grid,
   Meta,
   BreadCrumb,
-  Paginate
+  Paginate,
+  Card2
 }

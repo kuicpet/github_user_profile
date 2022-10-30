@@ -6,6 +6,7 @@ import Repos from './pages/Repos'
 import SingleRepo from './pages/SingleRepo'
 import NotFound from './pages/NotFound'
 import styled from 'styled-components'
+import SearchResults from './pages/SearchResults'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route exact path='/' element={<Home />} />
+        <Route exact path='/search/:keyword' element={<SearchResults />} />
         <Route exact path='/repos' element={<Repos />} />
         <Route exact path='/repos/:repoId' element={<SingleRepo />} />
         <Route path='*' element={<NotFound />} />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export const useRepoFetch = (repoId) => {
+export const useRepoFetch = (repoId, keyword) => {
   const [repo, setRepo] = useState({})
   const [loading, setLoading] = useState(false)
 
