@@ -23,7 +23,9 @@ const SearchBar = () => {
           placeholder='Search Users'
           onChange={(e) => setKeyword(e.target.value)}
         />
-        <button type='submit'>Search</button>
+        <button type='submit' disabled={!keyword}>
+          Search
+        </button>
       </form>
     </Container>
   )
@@ -59,6 +61,7 @@ export const Container = styled.div`
       border-bottom-right-radius: 8px;
       background-color: orange;
       font-weight: bold;
+      cursor: pointer;
     }
   }
 `

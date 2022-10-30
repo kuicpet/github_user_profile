@@ -54,7 +54,7 @@ const SearchResults = () => {
     }
     fetchUser()
     fetchUserRepos()
-  }, [])
+  }, [keyword])
 
   return (
     <Container>
