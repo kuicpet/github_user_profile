@@ -15,7 +15,7 @@ const SearchResults = () => {
   const { keyword } = useParams()
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(false)
-  const [repos, setRepos] = useState([])
+  //const [repos, setRepos] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -35,25 +35,9 @@ const SearchResults = () => {
       }
       setLoading(false)
     }
-    const fetchUserRepos = async () => {
-      try {
-        setLoading(true)
-        await fetch(`https://api.github.com/users/${keyword}/repos`, {
-          auth: token,
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-            setRepos(data)
-            setLoading(false)
-          })
-      } catch (error) {
-        console.log(error)
-      }
-      setLoading(false)
-    }
+   
     fetchUser()
-    fetchUserRepos()
+    //fetchUserRepos()
   }, [keyword])
 
   return (
@@ -112,6 +96,8 @@ const SearchResults = () => {
 
 export const Container = styled.div`
   display: flex;
+  //align-items: center ;
+  justify-content: center ;
   width: 70%;
   min-height: 80vh;
   margin: 0 auto;
