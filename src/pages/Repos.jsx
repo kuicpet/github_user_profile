@@ -81,9 +81,9 @@ export const Container = styled.div`
     margin: 1rem auto;
     border-radius: 10px;
     background-color: orange;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    //position: sticky;
+    //top: 0;
+    //z-index: 1000;
     @media screen and (max-width: 768px) {
       width: 90%;
     }

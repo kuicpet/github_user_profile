@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { DiGithubAlt } from 'react-icons/di'
+import SearchBar from './SearchBar'
 
 const Header = () => {
   return (
@@ -10,6 +11,9 @@ const Header = () => {
         <NavLink to='/'>
           <DiGithubAlt  className='logo'/>
         </NavLink>
+      </div>
+      <div className='search'>
+        <SearchBar />
       </div>
       <ul>
         <li>
@@ -37,6 +41,16 @@ export const Container = styled.nav`
   position: sticky ;
   top: 0;
   z-index: 500 ;
+  @media screen and (max-width: 768px) {
+    .search {
+      width: 60% ;
+    }
+  }
+  @media screen and (max-width: 400px) {
+     .search {
+      display: none ;
+     }
+  }
   div {
     display: flex;
     align-items: center;
