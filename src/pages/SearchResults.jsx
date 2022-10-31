@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { AiFillGithub } from 'react-icons/ai'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { Card2, Grid, Loader } from '../components'
-import { useApiFetch } from '../hooks/useApiFetch'
+import { Loader } from '../components'
 import moment from 'moment/moment'
 import { MdOutlineMail } from 'react-icons/md'
 import { HiOutlineUsers } from 'react-icons/hi'
 import { GrTwitter } from 'react-icons/gr'
 import { BiGitBranch } from 'react-icons/bi'
+import { BsLink45Deg } from 'react-icons/bs'
 
 const token = `${process.env.REACT_APP_API_TOKEN}`
 const SearchResults = () => {
   const { keyword } = useParams()
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(false)
-  //const [repos, setRepos] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,7 +24,7 @@ const SearchResults = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            //console.log(data)
             setUser(data)
             setLoading(false)
           })
@@ -35,7 +33,7 @@ const SearchResults = () => {
       }
       setLoading(false)
     }
-   
+
     fetchUser()
     //fetchUserRepos()
   }, [keyword])
@@ -63,7 +61,11 @@ const SearchResults = () => {
           <div className='details'>
             <div className='bio'>{user?.bio ? user?.bio : 'no bio'}</div>
             <div className='blog'>
-              <a href={user?.blog} target='_blank' rel='noreferrer'>
+              <a
+                href={user?.blog ? user?.blog : null}
+                target='_blank'
+                rel='noreferrer'>
+                <BsLink45Deg />
                 {user?.blog ? user?.blog : 'no website'}
               </a>
             </div>
@@ -81,11 +83,24 @@ const SearchResults = () => {
             </div>
             <div className='repo_count'>
               <BiGitBranch />
-              <p>Public Repositories: {user?.public_repos}</p>
+              <span>Public Repositories: {user?.public_repos}</span>
+
+              <span>
+                <a
+                  href={`${user?.html_url}?tab=repositories`}
+                  target='_blank'
+                  rel='noreferrer'>
+                  view
+                </a>
+              </span>
             </div>
             <div className='twitter'>
               <GrTwitter />
-              <p>{user?.twitter_username ? `@ ${user?.twitter_username}` : 'null'}</p>
+              <p>
+                {user?.twitter_username
+                  ? `@ ${user?.twitter_username}`
+                  : 'null'}
+              </p>
             </div>
           </div>
         </>
@@ -97,7 +112,7 @@ const SearchResults = () => {
 export const Container = styled.div`
   display: flex;
   //align-items: center ;
-  justify-content: center ;
+  justify-content: center;
   width: 70%;
   min-height: 80vh;
   margin: 0 auto;
@@ -105,7 +120,7 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     height: auto;
-    width: 90% ;
+    width: 90%;
   }
   .profile {
     display: flex;
@@ -215,16 +230,18 @@ export const Container = styled.div`
     .blog {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       width: 95%;
       margin: 1rem auto;
       a {
+        display: flex;
+        align-items: center;
         text-decoration: none;
         color: black;
         font-weight: 500;
         border: 2px solid black;
         width: 100%;
-        text-align: center;
+        // text-align: center;
         padding: 0.35rem;
         border-radius: 6px;
         background-color: #caff04;
@@ -235,6 +252,10 @@ export const Container = styled.div`
         padding: 0.25rem;
         box-shadow: 2px 2px black;
         transition: 0.1s ease-in-out;
+        svg {
+          font-size: 1.25rem;
+          margin: 0 1rem;
+        }
         &:hover {
           transform: translateY(2px);
           box-shadow: 0 0 0;
@@ -270,6 +291,23 @@ export const Container = styled.div`
     .users {
       span {
         margin-right: 1rem;
+      }
+    }
+    .repo_count {
+      span {
+        margin-right: auto;
+        a {
+          text-decoration: none;
+          color: black;
+          border: 2px solid black;
+          border-radius: 4px;
+          padding: 0.015rem 1.5rem;
+          cursor: pointer;
+          transition: 0.1s ease-in-out;
+          &:hover {
+            background-color: #caff04;
+          }
+        }
       }
     }
     @media screen and (max-width: 768px) {
