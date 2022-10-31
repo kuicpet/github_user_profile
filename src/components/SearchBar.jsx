@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { Meta } from './Meta'
 
 const SearchBar = () => {
   const navigate = useNavigate()
@@ -15,19 +16,22 @@ const SearchBar = () => {
     }
   }
   return (
-    <Container>
-      <form onSubmit={submitHandler}>
-        <input
-          type='text'
-          name='q'
-          placeholder='Search Users'
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-        <button type='submit' disabled={!keyword}>
-          Search
-        </button>
-      </form>
-    </Container>
+    <>
+      <Meta title={keyword} />
+      <Container>
+        <form onSubmit={submitHandler}>
+          <input
+            type='text'
+            name='q'
+            placeholder='Search Users'
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <button type='submit' disabled={!keyword}>
+            Search
+          </button>
+        </form>
+      </Container>
+    </>
   )
 }
 
