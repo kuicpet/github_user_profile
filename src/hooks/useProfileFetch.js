@@ -16,12 +16,12 @@ export const useProfileFetch = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            //console.log(data)
             setUser(data)
             setLoading(false)
           })
       } catch (error) {
-        console.log(error)
+        console.log(error.message)
       }
       setLoading(false)
     }
