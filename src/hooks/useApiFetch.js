@@ -11,7 +11,7 @@ export const useApiFetch = () => {
     const fetchRepos = async () => {
       try {
         setLoading(true)
-        await fetch(`https://api.github.com/users/kuicpet/repos`,{
+        await fetch(`https://api.github.com/users/kuicpet/repos?per_page=100`,{
           auth: token
         })
           .then((res) => res.json())
