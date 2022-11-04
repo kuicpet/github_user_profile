@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <Container>
       {loading ? (
-        <Loader />
+        <Loader text='Loading...' />
       ) : (
         <>
           <div className='profile'>
