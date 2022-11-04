@@ -120,7 +120,7 @@ const SingleRepo = () => {
   return (
     <>
       <Meta title={`${repoId}`} />
-      {loading && <Loader />}
+      {loading && <Loader text={`Loading...`} />}
       <Container>
         <BreadCrumb repoName={repoId} />
         <Wrapper>

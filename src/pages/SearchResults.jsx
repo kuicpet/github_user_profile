@@ -41,7 +41,7 @@ const SearchResults = () => {
   return (
     <Container>
       {loading ? (
-        <Loader />
+        <Loader text='Loading Github user...' />
       ) : (
         <>
           <div className='profile'>

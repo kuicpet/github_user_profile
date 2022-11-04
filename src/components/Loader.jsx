@@ -1,14 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Loader = () => (
+const Loader = ({text}) => (
   <Container>
     <Spinner />
+    <h3>{text}</h3>
   </Container>
 )
 
 export const Container = styled.div`
   min-height: 100vh ;
+  align-items: center ;
+  justify-content: center ;
+  h3 {
+    font-weight: 100 ;
+    text-align: center ;
+  }
 `
 export const Spinner = styled.div`
   width: 50px;

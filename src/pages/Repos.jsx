@@ -25,7 +25,7 @@ const Repos = () => {
           <h3>Public Repositories</h3>
         </div>
         {loading ? (
-          <Loader />
+          <Loader text='Loading Repositories...' />
         ) : (
           <Grid>
             {repos && repos.length > 0 ? (
