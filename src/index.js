@@ -6,6 +6,7 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import styled from 'styled-components'
+//import Error from './pages/Error'
 
 const ErrorFallback = ({ error }) => {
   return (
