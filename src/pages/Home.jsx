@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { GrTwitter, GrLinkedinOption, GrFacebookOption } from 'react-icons/gr'
 import { FaDiscord } from 'react-icons/fa'
 import { FiStar } from 'react-icons/fi'
@@ -31,7 +33,7 @@ const Home = () => {
       ) : (
         <>
           <div className='profile'>
-            <img src={avatar} alt='Kingsley umujeyan' />
+            <img src={loading ? <Skeleton /> : avatar} alt='Kingsley umujeyan' />
             <div>
               <h4>{userProfileName}</h4>
               <p>{userName}</p>

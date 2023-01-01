@@ -34,6 +34,7 @@ export const Content = styled.div`
     text-align: center;
     color: black;
     margin: 0.5rem 0;
+    //width: 50% ;
     @media screen and (max-width: 400px) {
       font-size: 2rem;
     }
