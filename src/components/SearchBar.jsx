@@ -10,10 +10,10 @@ const SearchBar = () => {
     e.preventDefault()
     if (keyword.trim()) {
       navigate(`/search/${keyword}`)
+      setKeyword('')
     } else {
       navigate('/')
     }
-    setKeyword('')
   }
   return (
     <>
@@ -25,7 +25,7 @@ const SearchBar = () => {
             placeholder='Search Users'
             onChange={(e) => setKeyword(e.target.value)}
           />
-          <button type='submit' disabled={!keyword}>
+          <button type='submit' disabled={!keyword || keyword.length < 3}>
             Search
           </button>
         </form>

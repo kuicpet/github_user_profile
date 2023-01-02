@@ -69,6 +69,9 @@ export const Container = styled.div`
   }
   .desc {
     margin-top: 1rem;
+    @media screen and (max-width: 400px) {
+      font-weight:400 ;
+    }
   }
   small {
     position: absolute;
